@@ -8,7 +8,7 @@ const Video = () => {
   const vidRef = useRef(null);
 
   // Array of video links
-  const videoLinks = ["/videos/Sea.mp4", "/videos/mountain.mp4"];
+  const videoLinks = ["/sea.mp4", "/mountain.mp4"];
 
   // Array of posters for each video
   const videoPosters = ["/images/sea.jpg", "/images/mountain.jpg"];
