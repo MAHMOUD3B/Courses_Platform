@@ -1,14 +1,27 @@
 "use client";
-import { useEffect, useState } from "react";
-import {
-  FaArrowRight,
-  FaBook,
-  FaChartBar,
-  FaComment,
-  FaQuestion,
-  FaTimes,
-} from "react-icons/fa";
-import LeadboardModal from "./LeadboardModal";
+import dynamic from "next/dynamic";
+import { useEffect, useState, lazy } from "react";
+const FaBook = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaBook }))
+);
+const FaComment = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaComment }))
+);
+const FaChartBar = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaChartBar }))
+);
+const FaQuestion = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaQuestion }))
+);
+const FaTimes = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaTimes }))
+);
+const FaArrowRight = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaArrowRight }))
+);
+const LeadboardModal = dynamic(() => import("./LeadboardModal"), {
+  ssr: false,
+});
 
 const scrollToBottomOfElement = (ele) => {
   const el = document.getElementById(ele);

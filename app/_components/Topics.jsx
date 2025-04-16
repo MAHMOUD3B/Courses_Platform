@@ -1,10 +1,15 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
 import AccordionItem from "./AccordionItem";
 import { FaLock, FaRegFile } from "react-icons/fa";
-import PdfPopup from "./PdfPopup";
-import ExamPopup from "./ExamPopup";
+const ExamPopup = dynamic(() => import("./ExamPopup"), {
+  ssr: false,
+});
+const PdfPopup = dynamic(() => import("./PdfPopup"), {
+  ssr: false,
+});
 
 const Topics = () => {
   const [showPDF, setShowPDF] = useState(false);

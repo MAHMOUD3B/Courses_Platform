@@ -1,16 +1,36 @@
-import {
-  FaBookOpen,
-  FaChalkboardTeacher,
-  FaClock,
-  FaGlobe,
-  FaMoneyBillWave,
-  FaUsers,
-} from "react-icons/fa";
+import React, { lazy, Suspense } from "react";
+
+const FaBookOpen = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaBookOpen }))
+);
+const FaChalkboardTeacher = lazy(() =>
+  import("react-icons/fa").then((module) => ({
+    default: module.FaChalkboardTeacher,
+  }))
+);
+const FaClock = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaClock }))
+);
+const FaGlobe = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaGlobe }))
+);
+const FaMoneyBillWave = lazy(() =>
+  import("react-icons/fa").then((module) => ({
+    default: module.FaMoneyBillWave,
+  }))
+);
+const FaUsers = lazy(() =>
+  import("react-icons/fa").then((module) => ({ default: module.FaUsers }))
+);
 
 const CourseMaterials = () => {
   const materials = [
     { icon: <FaMoneyBillWave />, label: "Price:", value: "200$" },
-    { icon: <FaChalkboardTeacher />, label: "Instructor:", value: "Edward Norton" },
+    {
+      icon: <FaChalkboardTeacher />,
+      label: "Instructor:",
+      value: "Edward Norton",
+    },
     { icon: <FaClock />, label: "Duration:", value: "3 weeks" },
     { icon: <FaBookOpen />, label: "Lessons:", value: "8" },
     { icon: <FaUsers />, label: "Enrolled:", value: "65 students" },
@@ -24,7 +44,10 @@ const CourseMaterials = () => {
         {materials.map((material, index) => (
           <li key={index} className="flex-between py-2">
             <span className="flex items-center font-[300]">
-              {material.icon} <span className="ms-2">{material.label}</span>
+              <Suspense fallback={<span>Loading...</span>}>
+                {material.icon}
+              </Suspense>
+              <span className="ms-2">{material.label}</span>
             </span>
             <span className="ms-2 font-[400]">{material.value}</span>
           </li>
