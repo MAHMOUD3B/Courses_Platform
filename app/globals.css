@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .container {
+    @apply p-4 md:p-5 lg:p-6 xl:p-8 mx-auto;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.breadcrumb li + li::before {
+  content: ">";
+  margin-inline: 5px;
+}
+
+.breadcrumb {
+  font-weight: 300;
+  li:last-child {
+    font-weight: 400;
+  }
+}
+
+.progress-mark {
+  &::after {
+    content: "You";
+    position: absolute;
+    right: -15px;
+    top: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(128, 128, 128, 0.6);
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    border: 5px solid rgba(128, 128, 128, 0.6);
+    border-color: rgba(128, 128, 128, 0.6) transparent transparent transparent;
+    right: -5px;
+  }
+}
+
+.comments, .course-materials {
+  li:not(:last-child) {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  }
+}
